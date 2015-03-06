@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,13 +24,15 @@ namespace WcfHost
 		public MainWindow()
 		{
 			InitializeComponent();
+			userLabel.Content = WindowsIdentity.GetCurrent().Name;
 		}
 
+		TestService _service;
 		private async void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			var service = new TestService();
-			this.mainLabel.Content =  await service.StartAsync();
-
-		}
+			_service = new TestService();
+			await _service.StartAsync();
+			this.mainLabel.Content = _service.Endpoint;
+        }
 	}
 }

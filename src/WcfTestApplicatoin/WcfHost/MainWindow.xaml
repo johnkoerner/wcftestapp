@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
     <Grid>
+		<Label VerticalAlignment="Top" x:Name="userLabel" />
         <Label x:Name="mainLabel" FontSize="18" Content="Not Listening" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

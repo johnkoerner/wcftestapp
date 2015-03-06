@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,14 +24,22 @@ namespace WcfClient
 		public MainWindow()
 		{
 			InitializeComponent();
+			userLabel.Content = WindowsIdentity.GetCurrent().Name;
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			MathService.MathClient client = new MathService.MathClient();
-			var result = client.Add(5, 3);
+			try
+			{
+				MathService.MathClient client = new MathService.MathClient();
+				var result = client.Add(5, 3);
 
-			MessageBox.Show(String.Format("The Result is {0}", result));
+				MessageBox.Show(String.Format("The Result is {0}", result));
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+			}
 		}
 	}
 }

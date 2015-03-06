@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+		<Label x:Name="userLabel" VerticalAlignment="Top" />
         <Button Content="Add 5 + 3" Width="200" Height="100" Click="Button_Click"/>
     </Grid>
 </Window>
